@@ -8,6 +8,8 @@
 #
 
 library(shiny)
+library(shinythemes)
+library(data.table)
 
 #CONSTS
 .GENE_IDs <- list("PPARGC1A", "PPARGC1B")
