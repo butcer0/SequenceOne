@@ -1,0 +1,25 @@
+{
+  "name": "sequence-one",
+  "version": "1.0.0",
+  "description": "Transcriptional Factor consensus sequence tool interfacing JASPAR chip-seq data",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=SequenceOneAppMac",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=cc.ico --out=SequenceOneAppWindows --version-string.CompanyName=SchepensEyeResearchInstitute --version-string.FileDescription=CE --version-string.ProductName=\"Sequence One App\"",
+    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+  },
+  "repository": "https://github.com/butcer0/SequenceOne.git",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^5.0.7"
+  }
+}
