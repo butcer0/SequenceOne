@@ -67,17 +67,17 @@ getSequence <- function(sequenceLocs, motifLength, transFactor = "MA1117.1", gen
    # p_consensus_regions <- as.list(strsplit(p_pieces_2, ",")[[1]]) %>% print
 }
 
-getSequences <- function(consensus_regions_list, tf, geneId) {
+getSequences <- function(consensus_regions_list, tf, geneId, motif_length) {
    # print(paste("Gene:",GENE_IDS[1],"-","Trans Factor:", TF_NAME))
    for (consensus_regions in consensus_regions_list) {
       for (location in consensus_region) {
-         sequence <- getSequence(location, MOTIF_LENGTH, tf, geneId)
+         sequence <- getSequence(location, motif_length, tf, geneId)
          print(paste("    location:", location, "-", sequence));
       }
    }
 }
 
-getLocationsAndSequences <- function(gene_ids, motifs, from, to, p, offset) {
+getLocationsAndSequences <- function(gene_ids, motifs, from, to, p, offset, motif_length) {
    print("getting genes and locations")
    
    
@@ -106,7 +106,7 @@ getLocationsAndSequences <- function(gene_ids, motifs, from, to, p, offset) {
          # result_sequences <- setNames(data.frame(matrix(ncol = 2, nrow = 0)), c("site", "sequence"))
          sequences <- c()
          for (location in p_consensus_regions) {
-            sequence <- getSequence(location, MOTIF_LENGTH, transFactor, gene_id, offset)
+            sequence <- getSequence(location, motif_length, transFactor, gene_id, offset)
             seq_set <- data.frame(as.list(location, sequence))
             sequences <- append(sequences, sequence)
             # print(paste("    location:", location, "-", sequence));
@@ -168,12 +168,6 @@ doSaveToExcel <- function(data, path) {
 
 
 
-
-
-
-
-
-
 motifMenu <- getMotifMenu()
 
 motif_ids <- motifMenu[["motifIds"]]
@@ -202,7 +196,16 @@ ui <- fluidPage(
              div(style="display: inline-block;vertical-align:center; width: 48%;", sliderInput("offset_input", "Offset",
                                                                                                min = -12, max = 0,
                                                                                                value = OFFSET)),
-             div(style="display: inline-block;vertical-align:center; width: 48%;",actionButton("save_excel_button", "Save to Excel", icon("list-alt"))),
+             div(style="display: inline-block;vertical-align:center; width: 48%;", sliderInput("motif_length_input", "motif length",
+                                                                                               min = 5, max = 16,
+                                                                                               value = MOTIF_LENGTH)),
+             div(style="display: inline-block;vertical-align:center; width: 98%;", textInput("save_path_input", "save path", paste(ROOT_PATH, "/output.xlsx", sep="")),
+               tags$head(tags$style("#save_path_input{
+                                 font-size: 12px;
+                                    }"
+                   )
+                )),
+             div(style="display: inline-block;vertical-align:center; width: auto; margin-right: 10px", actionButton("save_excel_button", "Save to Excel", icon("list-alt"))),
              div(style="display: inline-block;vertical-align:center; width: 48%;", checkboxInput("showStyle", "Show Style Selector", FALSE)),
          )),
       mainPanel(
@@ -221,8 +224,12 @@ ui <- fluidPage(
    )
 )
 
-server <- function(input, output) {
+server <- function(input, output, session) {
    sequenceDT <- data.frame()
+   formData <- reactive({
+      data <- sapply(c("sequence_table"), function(x) input[[x]])
+      data
+   })
    
    output$sequence_table <- renderDT({
       sequenceDT <- data.frame()
@@ -237,22 +244,59 @@ server <- function(input, output) {
       # TODO: Add loading context here
       # names(sequenceDT) <- c("motifIds", "motifNames")
       if (length(motifs[[1]]) > 0 && length(input$gene_names_input) > 0) {
-         sequenceDataTable <- getLocationsAndSequences(input$gene_names_input, motifs, input$from_input, input$to_input, input$p_input, input$offset_input)
-         
+         sequenceDataTable <- getLocationsAndSequences(input$gene_names_input, motifs, input$from_input, input$to_input, input$p_input, input$offset_input, input$motif_length_input)
+         sequenceDT <- sequenceDataTable
          return(sequenceDataTable)
       } else {
          return(data.frame(NULL))
       }
    })
    
+ 
+   
+   loadData <- function() {
+      if (exists("responses")) {
+         responses
+      }
+   }
+   
    observeEvent(input$save_excel_button, {
-      print("saving excel")
-      print(iris)
+      output <- data.frame()
+      # output <- iris
+            # sequenceDT <- data.frame()
+      # sequenceDT <- iris
+      # 
+      # return(sequenceDT)
+      
+      motifs <- subset(motifMenu, motifNames %in% input$motif_names_input)
+      # print(iris)
+      # class(iris)
+      # sequenceDT <- data.frame()
+      # TODO: Add loading context here
+      # names(sequenceDT) <- c("motifIds", "motifNames")
+      if (length(motifs[[1]]) > 0 && length(input$gene_names_input) > 0) {
+         sequenceDataTable <- getLocationsAndSequences(input$gene_names_input, motifs, input$from_input, input$to_input, input$p_input, input$offset_input, input$motif_length_input)
+         output <- sequenceDataTable
+         # return(sequenceDataTable)
+      } 
+      # else {
+      #    return(data.frame(NULL))
+      # }
+      
+      
+      # print("saving excel")
+      # print(iris)
       save.value <- input$save_excel_button
       
-      save.path <- paste(ROOT_PATH, "/iris_test.xlsx", sep="")
+      # todo: make path dynamic
+      # save.path <- paste(ROOT_PATH, "/iris_test.xlsx", sep="")
+      save.path <- input$save_path_input
       print(paste("Path:", save.path))
-      doSaveToExcel(iris, save.path)
+      # data(sequenceDT)
+      # glimpse(sequenceDT)
+      # as.data.frame(t(
+      doSaveToExcel(output, save.path)
+      # doSaveToExcel(formData, save.path)
       # doSaveToExcel(sequenceDT, "/my_test_sequence_data.xlsx")
       return("Save Successful")
    })
