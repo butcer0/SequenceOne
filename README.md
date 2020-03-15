@@ -1,11 +1,8 @@
 # SequenceOne
 Transcriptional Factor consensus sequence tool interfacing JASPAR chip-seq data
 
-<p>
-  <span class="get-badge" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Get the DOI badge!">
-    <img data-toggle="modal" data-target="[data-modal='10.5281-zenodo.3711589']" src="https://zenodo.org/badge/225500245.svg" alt="10.5281/zenodo.3711589">
-  </span>
-  </p>
+
+[![DOI](https://zenodo.org/badge/244519845.svg)](https://zenodo.org/badge/latestdoi/244519845)
 
 ## FIJI ImageJ
  <img src="https://imagej.net/_images/a/ae/Fiji-icon.png" alt="alt text" height="150px"> <br/>
