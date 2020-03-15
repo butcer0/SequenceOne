@@ -1,8 +1,7 @@
 # SequenceOne
 Transcriptional Factor consensus sequence tool interfacing JASPAR chip-seq data. This software is part of ongoing Ophthalmology Research with Schepens Eye Reserach Institute, Harvard Medical School, Mass General Hospital, Mass Eye and Ear, and support from Harvard John A. Paulson School of Engineering and Applied Sciences.
 
-
-[![DOI](https://zenodo.org/badge/244519845.svg)](https://zenodo.org/badge/latestdoi/244519845)
+[![DOI](https://zenodo.org/badge/225500245.svg)](https://zenodo.org/badge/latestdoi/225500245)
 
 ## FIJI ImageJ
  <img src="https://imagej.net/_images/a/ae/Fiji-icon.png" alt="alt text" height="150px"> <br/>
