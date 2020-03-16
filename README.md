@@ -19,7 +19,7 @@ Transcriptional Factor consensus sequence tool interfacing JASPAR chip-seq data.
 ## Chromatin Immunoprecipitation (Chip-SEQ)
  <img src="https://www.researchgate.net/profile/John_Dahl/publication/5864276/figure/fig1/AS:280541862612992@1443897800286/The-chromatin-immunoprecipitation-ChIP-assay.png" alt="alt text" width="50%"> <br/>
  
- ---
+---
 ## Affiliations and Acknowledgements
 <p>
   <span>
@@ -28,12 +28,12 @@ Transcriptional Factor consensus sequence tool interfacing JASPAR chip-seq data.
 
   <img src="https://static.projects.iq.harvard.edu/files/styles/os_files_large/public/jurkunaslab/files/hms-dept-of-ophthalmology-header_1_0.png?m=1468002348&itok=LU1fMHSR" alt="alt text" width="40%" style="margin: 5px; padding: 15px"> 
   <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Mass_Eye_and_Ear_logo.png/880px-Mass_Eye_and_Ear_logo.png" alt="alt text" height="80px" style="margin: 5px; padding: 15px">  <br/>
-  <img src="https://images.squarespace-cdn.com/content/v1/5c4f163bc3c16a7bcd76d22c/1551286956255-PWLD1JMEO7ID0J6HI6ZR/ke17ZwdGBToddI8pDm48kCFbcdkhUPZGrE-ehCxgq6IUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dsAo03hXZE9KleJcSyyU-RZ7WCyAWrO8oiCNeVVQ7bXJCjLISwBs8eEdxAxTptZAUg/H_SEAS_logo_RGB_on_black.png" alt="alt text" height="100px" style="margin: 5px; padding: 20px">
+   <img src="https://png2.cleanpng.com/sh/019a8f8df7def541846e404582e9bb27/L0KzQYm3U8MxN5lAiZH0aYP2gLBuTfhieqdmitY2anBrfn7oTgBifZ14h9C2c3Prf7FzTf9nNZZzf9t3ZXX1ebBuTfFvbF54jOdteT24cbPsUsRiOWI3e6NsOT68SIe4WcU3P2I6SqQ9MUC5RYi3V8Y5NqFzf3==/kisspng-harvard-john-a-paulson-school-of-engineering-and-study-5abe24a112c1c9.9861956715224106570768.png" alt="alt text" height="100px" style="margin: 5px; padding: 20px">
   <img src="https://static.scholar.harvard.edu/files/styles/os_files_xxlarge/public/florianfintelmann/files/mgh_clear_background_large.png?m=1515673739&itok=UTssvlKV" alt="alt text" width="40%" style="margin: 5px; padding: 15px"> 
-  
   </span>
- </p>
-  
+ </p> 
+ 
+  ---
   
 The authors have no conflicts of interest or financial disclosures. Please contact research institute for up-to-date information of funding and supporting parties. Human ethics was approved by the Mass General Research Ethics Consultation Unit.
 
